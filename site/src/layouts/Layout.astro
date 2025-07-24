@@ -61,9 +61,16 @@ const { title = "Open UI Design System" } = Astro.props;
   </body>
 </html>
 
-<!-- Global styles applied to prevent scoping and keep separation of concerns -->
-<style is:global>
+<style>
   body {
+    /*
+      Basic grid layout for the site.
+      The dot columns are for granular spacing control from within the layout and
+      reduce the need for component padding.
+
+      minmax(0, 1fr) constrains pre and tables from overflowing the grid:
+      https://stackoverflow.com/questions/52861086/why-does-minmax0-1fr-work-for-long-elements-while-1fr-doesnt
+    */
     display: grid;
     grid-template-areas:
       "header header header header"
@@ -83,6 +90,7 @@ const { title = "Open UI Design System" } = Astro.props;
     }
 
     @media (max-width: 768px) {
+      /* Sidenav has to go somewhere but is hidden on mobile */
       grid-template-areas:
         "header header header"
         "sidenav main ."
@@ -103,12 +111,6 @@ const { title = "Open UI Design System" } = Astro.props;
 
   .header-area {
     grid-area: header;
-  }
-  .header {
-    padding-inline: var(--edge-gap, 2rem);
-  }
-  .banner {
-    padding-inline: var(--edge-gap, 2rem);
   }
   .sidenav-area {
     grid-area: sidenav;

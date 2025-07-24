@@ -8,6 +8,7 @@
   --font-family-base: "Source Sans Pro", sans-serif;
   --font-family-heading: "Cabin", sans-serif;
   --font-size-base: 1rem;
+  --line-heihgt-base: 1.5;
   --color-text: hsl(12, 5%, 4%);
   --color-border: hsl(17, 24%, 90%);
 }
