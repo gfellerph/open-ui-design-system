@@ -1,4 +1,6 @@
 ---
+import ColorSchemeSwitch from "./ColorSchemeSwitch.astro";
+
 // Header.astro
 ---
 
@@ -13,6 +15,7 @@
     <span class="header__logo-title">Open UI</span>
   </a>
   <div class="header__nav">
+    <ColorSchemeSwitch />
     <a
       href="https://github.com/openui/design-system"
       target="_blank"
@@ -82,7 +85,9 @@
     justify-content: space-between;
     padding-block: 1rem;
     padding-inline: var(--layout-gap-inline, 2rem);
-    border-bottom: 1px solid var(--color-border, #ddd);
+    border-block-end: 1px solid var(--color-border, #ddd);
+    flex-wrap: wrap;
+    gap: 1rem;
   }
 
   .header__logo {
@@ -112,7 +117,8 @@
   .header__nav {
     display: flex;
     align-items: center;
-    gap: 1.25rem;
+    gap: 1rem;
+    flex-wrap: wrap;
   }
 
   .header__nav-link {
@@ -133,7 +139,12 @@
 
   .menu {
     appearance: none;
-    border: 0;
+    background-color: transparent;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 0.25rem 0.5rem;
+    display: flex;
+    align-items: center;
 
     @media (min-width: 768px) {
       display: none;

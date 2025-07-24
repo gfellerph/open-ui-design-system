@@ -1,20 +1,37 @@
 :root {
+  color-scheme: light dark;
+
   /* Layout tokens */
   --layout-gap-block: 2rem;
   --layout-gap-inline: 2rem;
-  --breakpoint-mobile: 768px;
 
   /* Typography tokens */
   --font-family-base: "Source Sans Pro", sans-serif;
   --font-family-heading: "Cabin", sans-serif;
   --font-size-base: 1rem;
   --line-heihgt-base: 1.5;
-  --color-text: hsl(12, 5%, 4%);
-  --color-border: hsl(17, 24%, 90%);
+
+  /* Color scheme tokens */
+  --color-text: light-dark(hsl(12, 5%, 4%), hsl(0, 0%, 100%));
+  --color-background: light-dark(hsl(0, 0%, 100%), hsl(0, 0%, 10%));
+  --color-border: light-dark(hsl(17, 24%, 90%), hsl(12, 5%, 33%));
 }
 
 @media (max-width: 768px) {
   :root {
     --layout-gap-inline: 1rem;
+  }
+}
+
+/**
+  * Color scheme toggle styles
+  * These styles are applied based on the checked state of the color scheme inputs.
+  */
+body {
+  &:has(#color-scheme-light:checked) {
+    color-scheme: light;
+  }
+  &:has(#color-scheme-dark:checked) {
+    color-scheme: dark;
   }
 }

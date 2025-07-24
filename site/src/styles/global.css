@@ -6,6 +6,7 @@ body {
   word-wrap: break-word;
   font-kerning: normal;
   color: var(--color-text);
+  background-color: var(--color-background);
 }
 
 :where(h1, h2, h3, h4, h5, h6) {
@@ -19,7 +20,7 @@ body {
 
 h1 {
   font-size: 2rem;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  border-block-end: 1px solid var(--color-border);
 }
 
 h2 {
@@ -108,7 +109,7 @@ thead {
 td,
 th {
   text-align: left;
-  border-bottom: 1px solid hsla(0, 0%, 0%, 0.12);
+  border-block-end: 1px solid var(--color-border);
   font-feature-settings: "tnum";
   padding-left: 1rem;
   padding-right: 1rem;

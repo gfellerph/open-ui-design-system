@@ -1,0 +1,59 @@
+<fieldset>
+  <legend class="sr-only">Color scheme</legend>
+  <label>
+    <span class="sr-only">Use system preference</span>
+    <span aria-hidden="true">💻</span>
+    <input
+      id="color-scheme-system"
+      type="radio"
+      name="color-scheme"
+      value="system"
+      checked={!["light", "dark"].includes(Astro.props.colorScheme)}
+    />
+  </label>
+  <label>
+    <span class="sr-only">Light</span>
+    <span aria-hidden="true">☀️</span>
+    <input
+      id="color-scheme-light"
+      type="radio"
+      name="color-scheme"
+      value="light"
+      checked={Astro.props.colorScheme === "light"}
+    />
+  </label>
+  <label>
+    <span class="sr-only">Dark</span>
+    <span aria-hidden="true">🌙</span>
+    <input
+      id="color-scheme-dark"
+      type="radio"
+      name="color-scheme"
+      value="dark"
+      checked={Astro.props.colorScheme === "dark"}
+    />
+  </label>
+</fieldset>
+
+<style>
+  fieldset {
+    display: flex;
+    border: 1px solid var(--color-border, #ddd);
+    border-radius: 10rem;
+    margin: 0;
+    gap: 0.75rem;
+    padding-block: 0.5rem;
+  }
+
+  label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    gap: 0.25rem;
+  }
+
+  input[type="radio"] {
+    cursor: pointer;
+    margin: 0;
+  }
+</style>

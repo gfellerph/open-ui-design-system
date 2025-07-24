@@ -54,6 +54,7 @@ const { pathname } = Astro.url;
   .sidenav {
     overflow-y: scroll;
     max-height: 100dvh;
+    background-color: var(--color-background);
 
     @media (min-width: 768px) {
       /* Reset popover styles for desktop, but only when closed to prevent window resizing issues when popover is still open */
@@ -71,7 +72,6 @@ const { pathname } = Astro.url;
       inset: 3rem;
       width: auto;
       height: auto;
-      background-color: white;
     }
 
     &::backdrop {
