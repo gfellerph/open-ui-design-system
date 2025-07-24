@@ -57,6 +57,25 @@
           fill="currentColor"></path></svg
       >
     </a>
+    <button type="button" class="menu" popovertarget="sidenav">
+      <span class="sr-only">Menu</span>
+      <svg
+        width="28"
+        height="28"
+        viewBox="0 0 28 28"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        aria-hidden="true"
+        class="menu__icon"
+      >
+        <rect y="6" width="28" height="2.5" rx="1.25" fill="currentColor"
+        ></rect>
+        <rect y="13" width="28" height="2.5" rx="1.25" fill="currentColor"
+        ></rect>
+        <rect y="20" width="28" height="2.5" rx="1.25" fill="currentColor"
+        ></rect>
+      </svg>
+    </button>
   </div>
 </header>
 
@@ -67,7 +86,8 @@
     align-items: center;
     justify-content: space-between;
     padding-block: 1rem;
-    padding-inline: 2rem;
+    padding-inline: var(--layout-gap-inline, 2rem);
+    border-bottom: 1px solid var(--color-border, #ddd);
   }
 
   .header__logo {
@@ -108,5 +128,14 @@
 
   .header__icon {
     vertical-align: middle;
+  }
+
+  .menu {
+    appearance: none;
+    border: 0;
+
+    @media (min-width: 768px) {
+      display: none;
+    }
   }
 </style>

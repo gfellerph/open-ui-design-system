@@ -1,0 +1,27 @@
+---
+// PreviewBanner.astro
+---
+
+<div class="preview-banner banner" role="status">
+  <span class="preview-banner__icon" aria-hidden="true">⚠️</span>
+  <span class="preview-banner__text">
+    This is a <strong>preview</strong> site intended for prototyping and not for
+    production use.
+  </span>
+</div>
+
+<style>
+  .preview-banner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    background: #fffbe6;
+    color: #856404;
+    padding-block: 0.75rem;
+    border-bottom: 1px solid var(--color-border, #ddd);
+  }
+  .preview-banner__icon {
+    font-size: 1.25em;
+  }
+</style>

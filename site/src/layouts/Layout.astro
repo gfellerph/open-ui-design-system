@@ -1,0 +1,125 @@
+---
+import Header from "../components/Header.astro";
+import SideNav from "../components/SideNav.astro";
+import PreviewBanner from "../components/PreviewBanner.astro";
+import Footer from "../components/Footer.astro";
+import "../styles/reset.css";
+import "../styles/global.css";
+import "../styles/theme.css";
+
+export interface Props {
+  title?: string;
+}
+const { title = "Open UI Design System" } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>{title}</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cabin:wght@400;700&family=Source+Sans+Pro:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Open Graph and other resources -->
+    <link rel="icon" type="image/svg+xml" href="/icons/favicon-32x32.png" />
+    <meta name="description" content="Open UI Design System" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content="Open UI Design System" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:creator" content="Open UI" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content="Open UI " />
+    <link rel="apple-touch-icon" href="/icons/icon-192x192.png" />
+    <meta name="theme-color" content="#00a453" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+
+    <meta name="generator" content={Astro.generator} />
+  </head>
+  <body>
+    <div class="header-area">
+      <PreviewBanner />
+      <Header />
+    </div>
+    <div class="sidenav-area">
+      <SideNav />
+    </div>
+    <slot name="anchornav" />
+    <main id="main" class="main">
+      <slot />
+    </main>
+    <div class="footer-area">
+      <Footer />
+    </div>
+  </body>
+</html>
+
+<!-- Global styles applied to prevent scoping and keep separation of concerns -->
+<style is:global>
+  body {
+    display: grid;
+    grid-template-areas:
+      "header header header header"
+      ". sidenav main ."
+      "footer footer footer footer";
+    grid-template-columns: auto auto minmax(0, 1fr) auto;
+    grid-template-rows: auto 1fr auto;
+    gap: var(--layout-gap-block) var(--layout-gap-inline);
+    min-height: 100dvh;
+
+    &:has(.anchornav) {
+      grid-template-areas:
+        "header header header header header"
+        ". sidenav main anchornav ."
+        "footer footer footer footer footer";
+      grid-template-columns: auto auto minmax(0, 1fr) auto auto;
+    }
+
+    @media (max-width: 768px) {
+      grid-template-areas:
+        "header header header"
+        "sidenav main ."
+        "footer footer footer";
+      grid-template-columns: auto minmax(0, 1fr) auto;
+      grid-template-rows: auto 1fr auto; /* 🏎️ 🪙 🏎️ */
+      gap: var(--layout-gap-block) var(--layout-gap-inline);
+
+      &:has(.anchornav) {
+        grid-template-areas:
+          "header header header"
+          "sidenav main anchornav"
+          "footer footer footer";
+        grid-template-columns: auto minmax(0, 1fr) auto auto;
+      }
+    }
+  }
+
+  .header-area {
+    grid-area: header;
+  }
+  .header {
+    padding-inline: var(--edge-gap, 2rem);
+  }
+  .banner {
+    padding-inline: var(--edge-gap, 2rem);
+  }
+  .sidenav-area {
+    grid-area: sidenav;
+  }
+  .anchornav {
+    grid-area: anchornav;
+  }
+  .main {
+    grid-area: main;
+  }
+  .footer-area {
+    grid-area: footer;
+  }
+</style>

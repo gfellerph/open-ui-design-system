@@ -1,0 +1,40 @@
+---
+title: Input Component
+description: Documentation for the Input component in the Open UI Design System.
+---
+
+# Input
+
+This is the Input component, used to capture user text or data entry. It supports various types and can be configured for different use cases.
+
+## Usage
+
+To use the Input component, import it and include it in your markup:
+
+```html
+<label for="input-example">Example Input:</label>
+<input id="input-example" type="text" class="oui-input" placeholder="Enter text here" />
+```
+
+## Props
+
+The Input component accepts the following props:
+
+| Prop         | Type      | Description                                                      |
+|--------------|-----------|------------------------------------------------------------------|
+| `type`       | string    | The input type: `text`, `email`, `password`, `number`, etc.      |
+| `value`      | string    | The current value of the input.                                  |
+| `placeholder`| string    | Placeholder text to display when the input is empty.             |
+| `disabled`   | boolean   | Disables the input if set to `true`.                             |
+| `readonly`   | boolean   | Makes the input read-only if set to `true`.                      |
+| `required`   | boolean   | Marks the input as required.                                     |
+| `autofocus`  | boolean   | Automatically focuses the input on mount.                        |
+| `name`       | string    | Name of the input, submitted with form data.                     |
+| `form`       | string    | Associates the input with a form element by ID.                  |
+| `minlength`  | number    | Minimum number of characters allowed.                            |
+| `maxlength`  | number    | Maximum number of characters allowed.                            |
+| `pattern`    | string    | Regex pattern the input's value must match.                      |
+| `tabindex`   | number    | Specifies the tab order of the input.                            |
+| `aria-*`     | string    | ARIA attributes for accessibility.                               |
+| `class`      | string    | CSS class names to apply to the input.                           |
+| `id`         | string    | The unique identifier for the input element.                     |

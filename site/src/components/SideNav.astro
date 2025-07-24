@@ -1,0 +1,111 @@
+---
+// SideNav.astro
+import { getCollection } from "astro:content";
+
+const components = await getCollection("components");
+const { pathname } = Astro.url;
+---
+
+<nav class="sidenav" popover id="sidenav">
+  <ul class="sidenav__list">
+    <li class="sidenav__category">
+      Getting Started
+      <ul>
+        <li><a href="/" class="sidenav__link">Home</a></li>
+        <li><a href="/introduction" class="sidenav__link">Introduction</a></li>
+        <li><a href="/installation" class="sidenav__link">Installation</a></li>
+      </ul>
+    </li>
+    <li class="sidenav__category">
+      Components
+      <ul>
+        {
+          components.map((component) => (
+            <li>
+              <a
+                href={`/components/${component.id}`}
+                class={`sidenav__link${pathname === `/components/${component.id}` ? " sidenav__link--active" : ""}`}
+              >
+                {component.data.title}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </li>
+    <li class="sidenav__category">
+      Guides
+      <ul>
+        <li><a href="/guides/theming" class="sidenav__link">Theming</a></li>
+        <li>
+          <a href="/guides/accessibility" class="sidenav__link">Accessibility</a
+          >
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+<style>
+  ul {
+    list-style: none;
+  }
+
+  .sidenav {
+    overflow-y: scroll;
+    max-height: 100dvh;
+
+    @media (min-width: 768px) {
+      /* Reset popover styles for desktop, but only when closed to prevent window resizing issues when popover is still open */
+      &:not(:popover-open) {
+        display: block;
+        position: sticky;
+        top: 1rem;
+        margin: 0;
+        border: 0;
+      }
+    }
+
+    &:popover-open {
+      position: fixed;
+      inset: 3rem;
+      width: auto;
+      height: auto;
+      background-color: white;
+    }
+
+    &::backdrop {
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+  }
+  .sidenav__list {
+    margin: 0;
+    padding: 0;
+  }
+  .sidenav__category {
+    font-weight: bold;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+  .sidenav__category ul {
+    margin: 0.5rem 0 1rem 1rem;
+    padding: 0;
+  }
+  .sidenav__link {
+    display: block;
+    color: var(--color-text, #222);
+    text-decoration: none;
+    padding: 0.25rem 0;
+    font-weight: normal;
+    font-size: 1rem;
+    border-radius: 4px;
+  }
+  .sidenav__link--active {
+    text-decoration: underline;
+  }
+</style>
