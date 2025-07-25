@@ -1,0 +1,34 @@
+---
+// Tab component for Astro using Lion Tabs
+// https://lion.js.org/components/tabs/overview/
+// https://elazizi.com/posts/how-to-create-an-astro-tabs-component/
+---
+
+<lion-tabs>
+  <slot />
+</lion-tabs>
+
+<style>
+  lion-tabs {
+    margin-block: 2rem;
+    display: block;
+    width: 100%;
+  }
+
+  lion-tabs ::slotted([slot="tab"]) {
+    padding: 0.5rem 1rem;
+    background-color: var(--color-background);
+    border: 1px solid var(--color-border);
+    cursor: pointer;
+  }
+
+  lion-tabs ::slotted([slot="panel"]) {
+    padding: 1rem;
+    background-color: var(--color-panel-background);
+    border-top: none;
+  }
+</style>
+
+<script>
+  import "@lion/ui/define/lion-tabs";
+</script>

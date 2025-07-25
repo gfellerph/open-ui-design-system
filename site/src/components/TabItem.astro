@@ -1,0 +1,49 @@
+---
+// Lion tab item component for Astro
+// https://lion.js.org/components/tabs/overview/
+// https://elazizi.com/posts/how-to-create-an-astro-tabs-component/
+
+export interface Props {
+  title: string;
+}
+
+const { title = "title" } = Astro.props;
+---
+
+<button slot="tab"> {title} </button>
+<div slot="panel" class="tab-panel">
+  <slot />
+</div>
+
+<style>
+  .tab-panel {
+    padding: 1rem;
+    background-color: var(--color-panel-background);
+    border-top: 1px solid var(--color-border);
+  }
+
+  button {
+    padding: 0.5rem 1rem;
+    background-color: var(--color-inactive-background);
+    border-width: 1px;
+    border-color: transparent;
+    border-style: solid;
+    border-bottom-color: var(--color-border);
+    cursor: pointer;
+    margin-bottom: -1px;
+
+    &[selected] {
+      background-color: var(--color-background);
+      border-color: var(--color-border);
+      border-bottom-color: transparent;
+    }
+
+    &:first-of-type {
+      margin-inline-start: 1rem;
+    }
+
+    &:last-of-type {
+      margin-inline-end: 1rem;
+    }
+  }
+</style>

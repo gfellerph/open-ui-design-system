@@ -1,6 +1,8 @@
 ---
 import { getCollection, render } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
+import Tabs from "../../components/Tabs.astro";
+import TabItem from "../../components/TabItem.astro";
 
 export async function getStaticPaths() {
   const components = await getCollection("components");
@@ -15,5 +17,5 @@ const { Content } = await render(component);
 ---
 
 <Layout>
-  <Content />
+  <Content components={{ ...component, Tabs, TabItem }} />
 </Layout>

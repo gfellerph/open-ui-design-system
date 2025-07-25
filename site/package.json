@@ -9,6 +9,7 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@lion/ui": "^0.12.0",
     "astro": "^5.12.1"
   },
   "devDependencies": {
