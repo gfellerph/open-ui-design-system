@@ -15,6 +15,7 @@
   --color-text: light-dark(hsl(12, 5%, 4%), hsl(0, 0%, 100%));
   --color-background: light-dark(hsl(0, 0%, 100%), hsl(0, 0%, 10%));
   --color-border: light-dark(hsl(17, 24%, 90%), hsl(12, 5%, 33%));
+  --color-primary: light-dark(#007a3d, #00b37e);
 }
 
 @media (max-width: 768px) {

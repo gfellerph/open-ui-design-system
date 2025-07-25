@@ -124,7 +124,7 @@ td:last-child {
   padding-right: 0;
 }
 a {
-  color: #007a3d;
+  color: var(--color-primary);
 }
 
 .sr-only {
