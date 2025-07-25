@@ -1,6 +1,7 @@
 ---
 // SideNav.astro
 import { getCollection } from "astro:content";
+import ColorSchemeSwitch from "./ColorSchemeSwitch.astro";
 
 const components = await getCollection("components");
 const { pathname } = Astro.url;
@@ -11,13 +12,20 @@ const { pathname } = Astro.url;
     <li class="sidenav__category">
       Getting Started
       <ul>
-        <li><a href="/" class="sidenav__link">Home</a></li>
         <li>
-          <a href="/#what-is-openui-design-system" class="sidenav__link"
-            >Introduction</a
+          <a
+            href="/"
+            class={`sidenav__link${pathname === `/` ? " sidenav__link--active" : ""}`}
+            >Home</a
           >
         </li>
-        <li><a href="/#installation" class="sidenav__link">Installation</a></li>
+        <li>
+          <a
+            href="/#installation"
+            class={`sidenav__link${pathname === "/#installation" ? " sidenav__link--active" : ""}`}
+            >Installation</a
+          >
+        </li>
       </ul>
     </li>
     <li class="sidenav__category">
@@ -40,14 +48,25 @@ const { pathname } = Astro.url;
     <li class="sidenav__category">
       Guides
       <ul>
-        <li><a href="/guides/theming" class="sidenav__link">Theming</a></li>
         <li>
-          <a href="/guides/accessibility" class="sidenav__link">Accessibility</a
+          <a
+            href="/guides/theming"
+            class={`sidenav__link${pathname === `/guides/theming` ? " sidenav__link--active" : ""}`}
+            >Theming</a
+          >
+        </li>
+        <li>
+          <a
+            href="/guides/accessibility"
+            class={`sidenav__link${pathname === `/guides/accessibility` ? " sidenav__link--active" : ""}`}
+            >Accessibility</a
           >
         </li>
       </ul>
     </li>
   </ul>
+
+  <ColorSchemeSwitch />
 </nav>
 
 <style>

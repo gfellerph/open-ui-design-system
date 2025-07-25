@@ -8,7 +8,6 @@
       type="radio"
       name="color-scheme"
       value="system"
-      checked={!["light", "dark"].includes(Astro.props.colorScheme)}
     />
   </label>
   <label>
@@ -19,7 +18,6 @@
       type="radio"
       name="color-scheme"
       value="light"
-      checked={Astro.props.colorScheme === "light"}
     />
   </label>
   <label>
@@ -30,7 +28,6 @@
       type="radio"
       name="color-scheme"
       value="dark"
-      checked={Astro.props.colorScheme === "dark"}
     />
   </label>
 </fieldset>
@@ -57,3 +54,28 @@
     margin: 0;
   }
 </style>
+
+<script>
+  const schemeRadios = document.querySelectorAll(
+    'input[name="color-scheme"]'
+  ) as NodeListOf<HTMLInputElement>;
+  schemeRadios.forEach((radio) => {
+    radio.addEventListener("change", (event) => {
+      const selectedScheme = (event.target as HTMLInputElement).value;
+      localStorage.setItem("color-scheme", selectedScheme);
+    });
+  });
+
+  const savedScheme = localStorage.getItem("color-scheme");
+  if (savedScheme) {
+    const activeRadio = document.querySelector(
+      `input[name="color-scheme"][value="${savedScheme}"]`
+    ) as HTMLInputElement;
+    if (activeRadio) activeRadio.checked = true;
+  } else {
+    const systemRadio = document.querySelector(
+      'input[name="color-scheme"][value="system"]'
+    ) as HTMLInputElement;
+    if (systemRadio) systemRadio.checked = true;
+  }
+</script>
