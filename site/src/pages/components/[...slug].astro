@@ -3,6 +3,7 @@ import { getCollection, render } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
 import Tabs from "../../components/Tabs.astro";
 import TabItem from "../../components/TabItem.astro";
+import Preview from "../../components/Preview.astro";
 
 export async function getStaticPaths() {
   const components = await getCollection("components");
@@ -17,5 +18,15 @@ const { Content } = await render(component);
 ---
 
 <Layout>
-  <Content components={{ ...component, Tabs, TabItem }} />
+  <Content components={{ ...component, Tabs, TabItem, Preview }} />
 </Layout>
+
+<style is:global>
+  input {
+    border-color: red !important;
+  }
+</style>
+
+<script>
+  import "baseline-status";
+</script>

@@ -1,0 +1,9 @@
+.oui-button {
+  appearance: none;
+  border: none;
+  font: inherit;
+  border-radius: 4px;
+  padding: 8px 16px;
+  background-color: black;
+  color: white;
+}

@@ -1,0 +1,40 @@
+---
+import fs from "node:fs/promises";
+import path from "node:path";
+
+const { style } = Astro.props;
+
+let css = "";
+
+if (style) {
+  const stylePath = path.resolve("src/content/components", style);
+  try {
+    css = await fs.readFile(stylePath, "utf8");
+  } catch (e) {
+    css = "/* Could not load stylesheet: " + stylePath + " */";
+  }
+}
+console.log("something", css);
+---
+
+<oui-preview>
+  <template shadowrootmode="open">
+    <style>
+      /* Disable inheritance from outside styles */
+      :host {
+        all: initial;
+      }
+    </style>
+    {css && <style set:html={css} />}
+    <slot />
+  </template>
+</oui-preview>
+
+<style>
+  oui-preview {
+    display: block;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 1.5rem;
+  }
+</style>
