@@ -9,39 +9,44 @@ This is the Input component, used to capture user text or data entry. It support
 
 ## Preview
 
-<Preview>
-  <label for="input-example">Example Input:</label>
-  <input id="input-example" type="text" class="oui-input" placeholder="Enter text here" />
-</Preview>
+<Preview style="./input.css" markup="./input.html" />
 
-## Usage
+<Tabs>
+  <TabItem title="Usage">
+    ## Usage
 
-To use the Input component, import it and include it in your markup:
+    To use the Button component, import it and include it in your markup:
 
-```html
-<label for="input-example">Example Input:</label>
-<input id="input-example" type="text" class="oui-input" placeholder="Enter text here" />
-```
+    <CodeBlock style="./input.css" markup="./input.html" />
+  </TabItem>
+  <TabItem title="Props">
+    ## Props
 
-## Props
+    The Input component accepts the following props:
 
-The Input component accepts the following props:
+    | Prop         | Type      | Description                                                      |
+    |--------------|-----------|------------------------------------------------------------------|
+    | `type`       | string    | The input type: `text`, `email`, `password`, `number`, etc.      |
+    | `value`      | string    | The current value of the input.                                  |
+    | `placeholder`| string    | Placeholder text to display when the input is empty.             |
+    | `disabled`   | boolean   | Disables the input if set to `true`.                             |
+    | `readonly`   | boolean   | Makes the input read-only if set to `true`.                      |
+    | `required`   | boolean   | Marks the input as required.                                     |
+    | `autofocus`  | boolean   | Automatically focuses the input on mount.                        |
+    | `name`       | string    | Name of the input, submitted with form data.                     |
+    | `form`       | string    | Associates the input with a form element by ID.                  |
+    | `minlength`  | number    | Minimum number of characters allowed.                            |
+    | `maxlength`  | number    | Maximum number of characters allowed.                            |
+    | `pattern`    | string    | Regex pattern the input's value must match.                      |
+    | `tabindex`   | number    | Specifies the tab order of the input.                            |
+    | `aria-*`     | string    | ARIA attributes for accessibility.                               |
+    | `class`      | string    | CSS class names to apply to the input.                           |
+    | `id`         | string    | The unique identifier for the input element.                     |
+  </TabItem>
+  <TabItem title="Availability">
+    ## Availability
 
-| Prop         | Type      | Description                                                      |
-|--------------|-----------|------------------------------------------------------------------|
-| `type`       | string    | The input type: `text`, `email`, `password`, `number`, etc.      |
-| `value`      | string    | The current value of the input.                                  |
-| `placeholder`| string    | Placeholder text to display when the input is empty.             |
-| `disabled`   | boolean   | Disables the input if set to `true`.                             |
-| `readonly`   | boolean   | Makes the input read-only if set to `true`.                      |
-| `required`   | boolean   | Marks the input as required.                                     |
-| `autofocus`  | boolean   | Automatically focuses the input on mount.                        |
-| `name`       | string    | Name of the input, submitted with form data.                     |
-| `form`       | string    | Associates the input with a form element by ID.                  |
-| `minlength`  | number    | Minimum number of characters allowed.                            |
-| `maxlength`  | number    | Maximum number of characters allowed.                            |
-| `pattern`    | string    | Regex pattern the input's value must match.                      |
-| `tabindex`   | number    | Specifies the tab order of the input.                            |
-| `aria-*`     | string    | ARIA attributes for accessibility.                               |
-| `class`      | string    | CSS class names to apply to the input.                           |
-| `id`         | string    | The unique identifier for the input element.                     |
+    <baseline-status featureid="label" display="wide"></baseline-status>
+    <baseline-status featureid="input" display="wide"></baseline-status>
+  </TabItem>
+</Tabs>

@@ -97,12 +97,12 @@ const { title = "Open UI Design System" } = Astro.props;
         "footer footer footer";
       grid-template-columns: auto minmax(0, 1fr) auto;
       grid-template-rows: auto 1fr auto; /* 🏎️ 🪙 🏎️ */
-      gap: var(--layout-gap-block) var(--layout-gap-inline);
 
       &:has(.anchornav) {
         grid-template-areas:
           "header header header"
-          "sidenav main anchornav"
+          ". anchornav ."
+          "sidenav main ."
           "footer footer footer";
         grid-template-columns: auto minmax(0, 1fr) auto auto;
       }

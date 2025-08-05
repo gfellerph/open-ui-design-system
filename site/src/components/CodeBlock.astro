@@ -1,0 +1,52 @@
+---
+import fs from "node:fs/promises";
+import path from "node:path";
+import Tabs from "./Tabs.astro";
+import TabItem from "./TabItem.astro";
+import { Code } from "astro:components";
+
+const { style, markup } = Astro.props;
+
+let css = "";
+let html = "";
+
+if (style) {
+  const stylePath = path.resolve("src/content/components", style);
+  try {
+    css = await fs.readFile(stylePath, "utf8");
+  } catch (e) {
+    css = "/* Could not load stylesheet: " + stylePath + " */";
+  }
+}
+
+if (markup) {
+  const markupPath = path.resolve("src/content/components", markup);
+  try {
+    html = await fs.readFile(markupPath, "utf8");
+  } catch (e) {
+    html = "<!-- Could not load markup: " + markupPath + " -->";
+  }
+}
+---
+
+<Tabs>
+  {
+    html && (
+      <TabItem title="HTML">
+        <Code lang="html" code={html} />
+      </TabItem>
+    )
+  }
+  {
+    css && (
+      <TabItem title="CSS">
+        <Code lang="css" code={css} />
+      </TabItem>
+    )
+  }
+</Tabs>
+
+<style>
+  lion-tabs {
+  }
+</style>
