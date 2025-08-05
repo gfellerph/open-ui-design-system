@@ -80,11 +80,6 @@ th {
 li {
   margin-block: 0.375rem;
 }
-ol li,
-ul li {
-  padding-left: 0;
-  list-style-position: inside;
-}
 
 pre {
   padding: 0.5rem;
